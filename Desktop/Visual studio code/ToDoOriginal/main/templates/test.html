@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link rel='stylesheet' href='styles/test.css'/> -->
+    <link rel='stylesheet' href="{% static 'styles/test.css' %}"/>
 </head>
 <body>
-    <h2>Это очень тестовая тестущая странница</h2>
+    
+    <div id='background'>
+        <h2>Это очень тестовая тестущая странница</h2>
+    </div>
 </body>
 </html>
