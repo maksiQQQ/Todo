@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <link rel='stylesheet' href='styles/test.css'/> -->
-    <link rel='stylesheet' href="{% static 'styles/test.css' %}"/>
+    <!-- <link rel='stylesheet' href="{% static 'styles/test.css' %}"/> -->
 </head>
 <body>
     
     <div id='background'>
         <h2>Это очень тестовая тестущая странница</h2>
     </div>
+    {% for todo in todo_list %}
+        <h3>{{ todo.text }} - {{ todo.created_at }}</h3>
+    {% endfor %}
 </body>
 </html>
