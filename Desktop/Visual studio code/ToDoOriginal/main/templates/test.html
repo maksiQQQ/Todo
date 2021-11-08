@@ -21,12 +21,16 @@
     {% endfor %} -->
     <section>
         <div class='create_container'>
-            <input
-            class='create_input'
-            type='text'
-            placeholder="Хмммм....Новая задача?"
-            />
-            <button class='create_button'>Добавить</button>
+            <form action="{% url 'add-todo' %}" method="POST">
+                {% csrf_token %}
+                <input
+                    class='create_input'
+                    type='text'
+                    placeholder="Хмммм....Новая задача?"
+                    name='todo_text'
+                />
+                <button class='create_button'>Добавить</button>
+            </form>
         </div>
         
         <div class='todo_container'>
