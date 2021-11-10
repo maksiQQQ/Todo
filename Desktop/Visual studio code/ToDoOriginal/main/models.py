@@ -8,7 +8,7 @@ class ToDo(models.Model):
 
 class ToMeet(models.Model):
     persone = models.TextField(max_length=50)
-    phone_number = models.IntegerField()
-    date_of_meeting = models.DateField(auto_now_add=True)
+    phone_number = models.TextField()
+    date_of_meeting = models.DateTimeField(auto_now_add=True)
     is_closed = models.BooleanField(default=False)
     is_favorite = models.BooleanField(default=False)
