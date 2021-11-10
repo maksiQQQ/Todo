@@ -1,8 +1,12 @@
 from django.shortcuts import redirect, render, HttpResponse
-from .models import ToDo
+from .models import ToDo, ToMeet
 
 def homepage(request):
     return render(request, "index.html")
+
+def meeting(request):
+    tomeet_list = ToMeet.objects.all()
+    return render(request, 'meeting.html', {"tomeet_list": tomeet_list})
 
 def test(request):
     todo_list = ToDo.objects.all()
