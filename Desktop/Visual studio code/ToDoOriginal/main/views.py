@@ -22,6 +22,13 @@ def add_todo(request):
     todo.save()
     return redirect(test)
 
+def add_tomeet(request):
+    form = request.POST
+    persone = form["tomeet_persone"]
+    tomeet = ToMeet(persone=persone)
+    tomeet.save()
+    return redirect(meeting)
+
 
 def delete_todo(request, id):
     todo = ToDo.objects.get(id=id)
