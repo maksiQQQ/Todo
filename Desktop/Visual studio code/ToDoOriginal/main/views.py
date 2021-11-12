@@ -46,6 +46,12 @@ def delete_todo(request, id):
     todo.delete()
     return redirect(test)
 
+def delete_tomeet(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.delete()
+    return redirect(meeting)
+
+
 def mark_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.is_favorite = True
