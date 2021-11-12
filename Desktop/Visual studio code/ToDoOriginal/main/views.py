@@ -58,6 +58,12 @@ def mark_todo(request, id):
     todo.save()
     return redirect(test)
 
+def mark_tomeet(request, id):
+    tomeet = ToMeet.objects.get(id=id)
+    tomeet.is_favorite = True
+    tomeet.save()
+    return redirect(meeting)
+
 def unmark_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.is_favorite = False

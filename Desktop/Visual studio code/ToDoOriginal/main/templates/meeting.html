@@ -45,7 +45,13 @@
                 <div class='todo_item_footer'>
                     <p>{{ tomeet.date_of_meeting }}</p>
                     <div class='action_buttons'>
-                        <img src="{% static 'icons/star-4-24.png' %}">
+                        {% if tomeet.is_favorite %}
+                        <a href="{% url 'mark-tomeet' tomeet.id %}"><img src="{% static 'icons/star-2-24.png' %}"></a>
+                        
+                        {% else %}
+                        <a href="{% url 'mark-tomeet' tomeet.id %}"><img src="{% static 'icons/star-4-24.png' %}"></a>
+                        
+                        {% endif %}
                         <a href="{% url 'delete-tomeet' tomeet.id %}"><img src="{% static 'icons/delete-24.png' %}"></a>
                     </div>
                 </div>
