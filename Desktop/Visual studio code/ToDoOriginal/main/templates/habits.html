@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habits</title>
+    <!-- <link rel='stylesheet' href='styles/index.css'/> -->
+    <link rel='stylesheet' href="{% static 'styles/index.css' %}" />
+    <!-- <link rel='stylesheet' href='styles/checkbox.css'/> -->
+    <link rel='stylesheet' href="{% static 'styles/checkbox.css' %}" />
+</head>
+<body>
+    <!-- {{ tomeeting_list }} -->
+    <!-- {% for tomeet in tomeet_list %}
+    <h2>{{ tomeet.persone }} - {{ tomeet.phone_number }}</h2>
+    {% endfor %} -->
+    <section>
+        <div class='create_container'>
+            <form action="{% url 'add-habits' %}" method="POST">
+                {% csrf_token %}
+                <input class='create_input' 
+                type='text' 
+                placeholder="Хмммм....Новая привычка?"
+                name="tohabits_name" 
+                />
+                <button class='create_button'>Добавить</button>
+            </form>
+        </div>
+
+        <div class='todo_container'>
+
+            {% for tohabits in tohabits_list %}
+            <div class='todo_item'>
+                <div class='todo_item_header'>
+                    <label class='checkbox_container'>
+                        <input type='checkbox'>
+                        <span class='checkmark'></span>
+                    </label>
+                    <h4>{{ tohabits.name }}</h4>
+                </div>
+                <div class='todo_item_footer'>
+                    <p>{{ tohabits.comment }}</p>
+                    <div class='action_buttons'>
+                        <img src="{% static 'icons/star-4-24.png' %}">
+                        <img src="{% static 'icons/delete-24.png' %}">
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </section>
+</body>
+
+</html>

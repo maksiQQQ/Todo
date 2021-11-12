@@ -5,6 +5,10 @@
     color: #263238;
 }
 
+body{
+    background: #60d4e9;
+}
+
 section{
     width: 100%;
     padding: 20px;
@@ -58,7 +62,7 @@ section{
 }
 
 .todo_item.done{
-    background-color: #E0E0E0;
+    background-color: #998c8c;
     text-decoration: line-through;
     color: #757575;
 }

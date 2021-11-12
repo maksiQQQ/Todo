@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render, HttpResponse
-from .models import ToDo, ToMeet
+from .models import *
 
 def homepage(request):
     return render(request, "index.html")
@@ -7,6 +7,10 @@ def homepage(request):
 def meeting(request):
     tomeet_list = ToMeet.objects.all()
     return render(request, 'meeting.html', {"tomeet_list": tomeet_list})
+
+def habits(request):
+    tohabits_list = ToHabits.objects.all()
+    return render(request, 'habits.html', {"tohabits_list": tohabits_list})
 
 def test(request):
     todo_list = ToDo.objects.all()
@@ -29,6 +33,13 @@ def add_tomeet(request):
     tomeet.save()
     return redirect(meeting)
 
+def add_habits(request):
+    form = request.POST
+    name = form["tohabits_name"]
+    tohabits = ToHabits(name=name)
+    tohabits.save()
+    return redirect(habits)
+
 
 def delete_todo(request, id):
     todo = ToDo.objects.get(id=id)
@@ -38,6 +49,12 @@ def delete_todo(request, id):
 def mark_todo(request, id):
     todo = ToDo.objects.get(id=id)
     todo.is_favorite = True
+    todo.save()
+    return redirect(test)
+
+def unmark_todo(request, id):
+    todo = ToDo.objects.get(id=id)
+    todo.is_favorite = False
     todo.save()
     return redirect(test)
 

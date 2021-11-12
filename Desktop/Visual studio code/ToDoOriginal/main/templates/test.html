@@ -57,10 +57,15 @@
                     <p>{{ todo.created_at }}</p>
                     <div class='action_buttons'>
                         {% if todo.is_favorite %}
-                        <a href="{% url 'mark-todo' todo.id %}"><img src="{% static 'icons/star-2-24.png' %}"></a>
+                        <a href="{% url 'unmark-todo' todo.id %}"><img src="{% static 'icons/star-2-24.png' %}"></a>
+                        
                         {% else %}
                         <a href="{% url 'mark-todo' todo.id %}"><img src="{% static 'icons/star-4-24.png' %}"></a>
+                        
                         {% endif %}
+
+                       
+
                         <a href="{% url 'delete-todo' todo.id %}"><img src="{% static 'icons/delete-24.png' %}"></a>
                     </div>
                 </div>
